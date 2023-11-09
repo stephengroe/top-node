@@ -18,6 +18,9 @@ const server = http.createServer( (req, res) => {
     case '/contact':
       filePath = __dirname + '/contact.html';
       break;
+    case '/style.css':
+      filePath = __dirname + '/style.css';
+      break;
     default:
       filePath = __dirname + '/404.html';
   }
