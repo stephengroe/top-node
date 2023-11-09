@@ -5,7 +5,7 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer( (req, res) => {
-  let path;
+  let filePath;
   let status = 200;
 
   switch(req.url) {
