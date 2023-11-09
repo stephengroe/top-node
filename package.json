@@ -1,0 +1,12 @@
+{
+  "name": "top-node",
+  "version": "1.0.0",
+  "description": "Basic informational site built with Node.js (The Odin Project)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Stephen Roe",
+  "license": "MIT"
+}
