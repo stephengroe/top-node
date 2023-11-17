@@ -1,41 +1,28 @@
-const http = require('http');
-const fs = require('fs');
-
-const hostname = '127.0.0.1';
+const express = require('express');
+const app = express();
 const port = 3000;
+const hostname = '127.0.0.1';
 
-const server = http.createServer( (req, res) => {
-  let filePath;
-  let status = 200;
-
-  switch(req.url) {
-    case '/':
-    case '/index':
-      filePath = '/index.html';
-      break;
-    case '/about':
-      filePath = '/about.html';
-      break;
-    case '/contact':
-      filePath = '/contact.html';
-      break;
-    case '/style.css':
-      filePath = '/style.css';
-      break;
-    default:
-      filePath = '/404.html';
-      status = 404;
-  }
-
-  filePath = __dirname + filePath;
-
-  fs.readFile(filePath, (err, data) => {
-    res.writeHead(status, {'Content-Type': 'text/html'});
-    res.write(data)
-    res.end();
-  });
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
-server.listen(port, hostname, () => {
+app.get('/index', (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(__dirname + "/about.html");
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(__dirname + "/contact.html");
+});
+
+app.use((req, res) => {
+  res.status(404).sendFile(__dirname + "/404.html");
+});
+
+app.listen(port, hostname, () => {
   console.log(`Server is running at http://${hostname}:${port}`)
 });
